@@ -24,6 +24,12 @@ rel_data = rel_data[rel_data["Date"] >= "2000-01-01"]
 #Remove Div and Stock split cols, bcoz Adjusted Close and Close retreived
 rel_data = rel_data.drop(columns=["Dividends", "Stock Splits"])
 
+rel_data = rel_data.rename(columns={"Date": "date", "Stock": "stock", "Open": "open", "High" : "high", "Low" : "low","Close": "close", "Adj Close": "adj_close", "Volume": "volume"})
+print(rel_data.reset_index(drop=True))
+# print(rel_data.to_string(index=False))
+
+
+
 # print(rel_data.head().to_string(index=False))
 # print(rel_data.info())
 
@@ -31,17 +37,21 @@ rel_data = rel_data.drop(columns=["Dividends", "Stock Splits"])
 # Sumamry Statistics
 # print(rel_data.describe())
 
+# Stock Info
+# print(rel_data.info())
 
 ## To check the trading days where colume is equal to 0
 # rel_data = rel_data[rel_data["Volume"] <= 0 ]
 # print(rel_data)
 
-print(type(rel_data.head().to_string(index=False))) #---prints out the data in string format#
+
+# print(type(rel_data.head().to_string(index=False))) #---prints out the data in string format#
 
 
 
-with open("rel_stock_data.csv", "w") as file:
-    file.write("hello")
+# print(rel_data.to_string(index=False))
+# with pd.option_context('display.max_rows', None):
+#     print(rel_data)
 
 
 
